@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  nginx-minio-client:
+    image: nginx-with-minio-client
+    build:
+      context: .
+    ports:
+      - "80:80"
+    environment:
+      TZ: "Asia/Kolkata"
+      MC_SERVER_URL: "http://172.16.145.175:9000"
+      MC_ACCESS_KEY: "minioadmin"
+      MC_SECRET_KEY: "minioadmin"
+      MC_BUCKETS: "automation,esignet"
+    volumes:
+      - "/etc/timezone:/etc/timezone:ro"
+
